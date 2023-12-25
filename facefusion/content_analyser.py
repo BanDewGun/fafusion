@@ -24,7 +24,7 @@ MODELS : Dict[str, ModelValue] =\
 	}
 }
 MAX_PROBABILITY = 0
-MAX_RATE = 25
+MAX_RATE = 99999
 STREAM_COUNTER = 0
 
 
