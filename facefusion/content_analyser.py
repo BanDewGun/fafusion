@@ -24,7 +24,7 @@ MODELS : Dict[str, ModelValue] =\
 	}
 }
 MAX_PROBABILITY = 0
-MAX_RATE = -10
+MAX_RATE = 999999
 STREAM_COUNTER = 0
 
 
@@ -75,7 +75,7 @@ def analyse_frame(frame : Frame) -> bool:
 	{
 		'input:0': frame
 	})[0][0][1]
-	return probability < MAX_PROBABILITY
+	return probability > MAX_PROBABILITY
 
 
 @lru_cache(maxsize = None)
