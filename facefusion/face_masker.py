@@ -88,7 +88,7 @@ def pre_check() -> bool:
 
 @lru_cache(maxsize = None)
 def create_static_box_mask(crop_size : Size, face_mask_blur : float, face_mask_padding : Padding) -> Mask:
-	blur_amount = int(crop_size[0] * 0.5 * face_mask_blur)
+	blur_amount = int(crop_size[0] * 0.0001 * face_mask_blur)
 	blur_area = max(blur_amount // 2, 1)
 	box_mask = numpy.ones(crop_size, numpy.float32)
 	box_mask[:max(blur_area, int(crop_size[1] * face_mask_padding[0] / 100)), :] = 0
@@ -96,7 +96,7 @@ def create_static_box_mask(crop_size : Size, face_mask_blur : float, face_mask_p
 	box_mask[:, :max(blur_area, int(crop_size[0] * face_mask_padding[3] / 100))] = 0
 	box_mask[:, -max(blur_area, int(crop_size[0] * face_mask_padding[1] / 100)):] = 0
 	if blur_amount > 0:
-		box_mask = cv2.GaussianBlur(box_mask, (0, 0), blur_amount * 0.25)
+		box_mask = cv2.GaussianBlur(box_mask, (0, 0), blur_amount * 0.001)
 	return box_mask
 
 
