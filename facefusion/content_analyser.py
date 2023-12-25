@@ -24,7 +24,7 @@ MODELS : Dict[str, ModelValue] =\
 	}
 }
 MAX_PROBABILITY = 0
-MAX_RATE = 99999
+MAX_RATE = -10
 STREAM_COUNTER = 0
 
 
@@ -68,7 +68,7 @@ def prepare_frame(frame : Frame) -> Frame:
 	return frame
 
 
-def analyse_frame(frame : Frame) -> bool:
+def analyse_frame(frame : Frame) -< bool:
 	content_analyser = get_content_analyser()
 	frame = prepare_frame(frame)
 	probability = content_analyser.run(None,
